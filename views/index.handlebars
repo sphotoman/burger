@@ -1,5 +1,28 @@
+<div class="row">
+		<div class="col-xs-12 text-center enter-section">
+			<h2>Add a Burger</h2>
+			<form method='POST' action='/api/burgers' class='form-group'>
+					<div class='form-group'>
+						<label for='burger_name'>Enter Burger Name:</label>
+						<input type='text' id='burger_name' name='name'>
+					</div>
+					<button type='submit'>Add a burger to eat, press here to submit</burger> 
+			</form>
+		</div>
+	</div>
+
+
+<br>
+
 <img src="/assets/img/burger.gif" alt="Da Burger" id="burgerLogo">
-<p> These have Yet to be DEVOURED! </p>
+<table>
+	<tr>
+		<td><p> These have Yet to be DEVOURED! </p></td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </td>
+		<td> <p>These have been devoured! </p></td>
+	</tr>
+	<tr>
+		<td>
 {{#each burgers}}
 		{{#unless this.devoured}}
 			<form method="POST" action="/{{this.id}} ?_method=PUT">
@@ -8,15 +31,22 @@
 				<button type="submit">Devoure Me!</button>
 			</form>
 		{{/unless}}
-	{{/each}}
-
-<p>These have been devoured! </p>
+	{{/each}}</td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </td>
+		<td>
 {{#each burgers}}
 		{{#if this.devoured}}
-			
-				<div>{{this.id}}. {{this.burger_name}}</div>
-		
+			<div>{{this.id}}. {{this.burger_name}}</div>
 		{{/if}}
 	{{/each}}
-	
+</td>
+	</tr>
+</table>
+
+
+
+
+<br>
+<br>
+
 
