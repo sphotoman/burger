@@ -1,9 +1,22 @@
-<li>
-	{{name}}
+<img src="/assets/img/burger.gif" alt="Da Burger" id="burgerLogo">
+<p> These have Yet to be DEVOURED! </p>
+{{#each burgers}}
+		{{#unless this.devoured}}
+			<form method="POST" action="/{{this.id}} ?_method=PUT">
+				<div>{{this.id}}. {{this.burger_name}}</div>
+				<input type="hidden" name="devoured" value="true">
+				<button type="submit">Devoure Me!</button>
+			</form>
+		{{/unless}}
+	{{/each}}
 
-	<button class="change-sleep" data-id="{{id}}" data-newsleep="{{sleep}}">
-		{{#if sleep}}SLEEP TIME!{{else}}WAKE UP!{{/if}}
-	</button>
+<p>These have been devoured! </p>
+{{#each burgers}}
+		{{#if this.devoured}}
+			
+				<div>{{this.id}}. {{this.burger_name}}</div>
+		
+		{{/if}}
+	{{/each}}
+	
 
-	<button class="delete-cat" data-id="{{this.id}}">DELETE!</button>
-</li>
