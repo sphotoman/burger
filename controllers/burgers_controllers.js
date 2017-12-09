@@ -13,15 +13,27 @@ router.get("/", function(req, res) {
 	});
 });
 
-router.post("/api/burgers", function(req, res) {
-  burger.create(["burger_name", "devoured"], 
-  	[req.body.burger_name, req.body.devoured], 
-  		function(result) {
-    // Send back the ID of the new quote
-    res.json({ id: result.insertId });
-    // res.render("index", hbsObject);
-  	});
+
+router.post('/api/burgers', function(req, res){
+	console.log('hit route');
+	burger.create([
+	'burger_name', 'devoured'
+	], [
+	req.body.name, false
+	], function(result){
+		//send back the ID of the new burger
+		burger.all(function(data){
+		var hbsObject = {
+			burgers:data
+		};
+		console.log(hbsObject);
+		res.redirect('/');
+		});
+	});
 });
+
+
+
 
 router.put("/:id", function(req, res) {
   var condition = "id = " + req.params.id;
