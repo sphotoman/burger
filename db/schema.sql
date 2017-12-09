@@ -9,5 +9,5 @@ CREATE TABLE burgers (
   burger_name VARCHAR(256) notNULL,
   devoured boolean,
   date timeStamp,
-  PRIMARY KEY (id)
+  PRIMARY KEY(id)
 );
